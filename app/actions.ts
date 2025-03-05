@@ -53,7 +53,13 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect("/protected");
+  const { data: userAuth } = await supabase.from("user").select("*").single();
+
+  if (userAuth?.role === "admin") {
+    return redirect("/");
+  } else {
+    return redirect("/employee");
+  }
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -132,3 +138,30 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect("/sign-in");
 };
+
+
+export const accessDashboard = async () => {
+  const supabase = await createClient();
+  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/sign-in");
+  }
+
+  const { data: userAuth } = await supabase.from("user").select("*").single();
+
+  if(userAuth?.role === "admin") {
+    return redirect("/admin");
+  }
+  
+  if(userAuth?.role === "user") {
+    return redirect("/employee")
+  }
+}
+
+export const goHome = async () => {
+  return redirect("/");
+}

@@ -44,9 +44,30 @@ export const updateSession = async (request: NextRequest) => {
       return NextResponse.redirect(new URL("/sign-in", request.url));
     }
 
-    if (request.nextUrl.pathname === "/" && !user.error) {
-      return NextResponse.redirect(new URL("/protected", request.url));
-    }
+    // if (request.nextUrl.pathname === "/" && !user.error) {
+
+
+    //     const {
+    //       data: { user },
+    //     } = await supabase.auth.getUser();
+      
+    //     if (!user) {
+    //       return NextResponse.redirect(new URL("/sign-in", request.url));
+    //     }
+      
+    //     const { data: userAuth } = await supabase.from("user").select("*").single();
+      
+    //     if(userAuth?.role === "admin") {
+    //       return NextResponse.redirect(new URL("/admin", request.url));
+    //     }
+    //     else if(userAuth?.role === "employee") {
+    //       return NextResponse.redirect(new URL("/employee", request.url));
+    //     }
+    //     else {
+    //       return NextResponse.redirect(new URL("/sign-in", request.url));
+    //     }
+
+    // }
 
     return response;
   } catch (e) {
