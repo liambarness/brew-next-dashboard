@@ -33,8 +33,7 @@ export default function RootLayout({
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           {/* <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
