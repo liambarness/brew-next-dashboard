@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { goHome } from "../actions";
+import Dashboard from "@/components/dashboard";
 
 export default async function ReportPage() {
   const supabase = await createClient();
@@ -25,19 +26,20 @@ export default async function ReportPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-amber-900 mb-6">Sales Dashboard</h1>
         
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-semibold text-amber-800 mb-4"> Overview</h2>
-          {/* Add your report content here */}
-        </div>
 
-        <div className="mt-6">
+
+
+      </div>
+
+      <Dashboard />
+
+      <div className="mt-6">
           <form action={goHome}>
             <Button className="bg-amber-600 hover:bg-amber-700 text-white">
               Back to Dashboard
             </Button>
           </form>
         </div>
-      </div>
     </div>
   );
 } 

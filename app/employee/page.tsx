@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { goHome, signOutAction } from "../actions";
+import EmployeeDashboard from "@/components/employee-dashboard";
 
 export default async function Employee() {
   const supabase = await createClient();
@@ -25,10 +26,8 @@ export default async function Employee() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-amber-900 mb-6">Report Sales</h1>
         
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-xl font-semibold text-amber-800 mb-4">Report Overview</h2>
-          {/* Add your report content here */}
-        </div>
+
+        <EmployeeDashboard/>
 
         <div className="mt-6">
           <form action={goHome}>
