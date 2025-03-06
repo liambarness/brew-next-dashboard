@@ -1,7 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { goHome } from "../actions";
+import { goHome, signOutAction } from "../actions";
 
 export default async function Employee() {
   const supabase = await createClient();
@@ -23,7 +23,7 @@ export default async function Employee() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 to-blue-100 p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-amber-900 mb-6">Worker Reports</h1>
+        <h1 className="text-3xl font-bold text-amber-900 mb-6">Report Sales</h1>
         
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-xl font-semibold text-amber-800 mb-4">Report Overview</h2>
@@ -37,6 +37,11 @@ export default async function Employee() {
             </Button>
           </form>
         </div>
+        <form action={signOutAction}>
+            <Button variant="outline" className="text-amber-700 border-amber-700 hover:bg-amber-50">
+                        Sign Out
+                      </Button>
+                    </form>
       </div>
     </div>
   );
